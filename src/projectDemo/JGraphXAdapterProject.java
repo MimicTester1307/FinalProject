@@ -231,8 +231,7 @@ public class JGraphXAdapterProject extends JApplet {
         path from connection 1 to connection 4.
          */
         System.out.println("Shortest path from connection1 to connection4:");
-        DijkstraShortestPath<String, DefaultEdge> dijkstraAlg =
-                new DijkstraShortestPath<>(g);
+        DijkstraShortestPath<String, DefaultEdge> dijkstraAlg = new DijkstraShortestPath<>(g);
         ShortestPathAlgorithm.SingleSourcePaths<String, DefaultEdge> iPaths = dijkstraAlg.getPaths(connection1);
         System.out.println(iPaths.getPath(connection4) + "\n");
     }
