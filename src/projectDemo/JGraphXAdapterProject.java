@@ -6,15 +6,15 @@ import org.jgrapht.ListenableGraph;
 import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultListenableGraph;
-import org.jgrapht.graph.DefaultUndirectedGraph;
+import org.jgrapht.graph.DirectedMultigraph;
 
 import javax.swing.*;
 import java.awt.*;
 
 
 /**
- * An applet to display an application of graphs to mapping the connection of different
- * courses at Ashesi
+ * An applet to display an application of graphs to mapping different
+ * connections
  *
  */
 @SuppressWarnings("deprecation")
@@ -25,11 +25,16 @@ public class JGraphXAdapterProject extends JApplet {
     private static final Dimension DEFAULT_SIZE = new Dimension(800, 800);
 
 
+    /**
+     * Main method, where processes are initialized.
+     * @param args command line arguments for main
+     */
     public static void main(String[] args) {
 
         JGraphXAdapterProject applet = new JGraphXAdapterProject();
         applet.init();
 
+        /* Creating a new Swing frame (window) and specifying some properties. */
         JFrame frame = new JFrame();
         frame.getContentPane().add(applet);
         frame.setTitle("JGraphT Adapter Graph Visualization");
@@ -45,15 +50,45 @@ public class JGraphXAdapterProject extends JApplet {
     But the init method can display only one graph at a time
     Uncomment the different graphs to view them.
      */
+
+    /**
+     * init: inherited from JApplet and
+     * overridden by my class. Major processes
+     * take place here.
+     */
     @Override
     public void init() {
-        // sample data that will be used as vertices for graph
+        /*sample data that will be used as vertices for graph*/
+        //Years
         String year1 = "Year One";
         String year2 = "Year Two";
         String year3 = "Year Three";
         String year4 = "Year Four";
-        String semester1 = "Semester 1";
-        String course1 = "FDE I";
+
+        /* Modelling LinkedIn connections using a graph.
+        * Creating the connections that will serve as vertices.
+        * */
+        String connection1 = "Excel Chukwu";
+        String connection2 = "Sean Ofori-Addo";
+        String connection3 = "Emmanuel Ainoo";
+        String connection4 = "David Ebo";
+        String connection5 = "Miriam Duke";
+        String connection6 = "Elijah Boateng";
+        String connection7 = "Faddal Ibrahim";
+        String connection8 = "Ibrahim Kassim";
+        String connection9 = "Clement Ngosong";
+        String connection10 = "Petra Abosi";
+        String connection11 = "Elizabeth Ejereonye";
+        String connection12 = "Kekeli Mensah";
+        String connection13 = "Eyram Bleboo";
+        String connection14 = "Derryck Dowuona";
+        String connection15 = "Chantel Owusu";
+        String connection16 = "Hannah Lormenyo";
+        String connection17 = "Oswald Gyabaah";
+        String connection18 = "Isioma Ekejiuba";
+        String connection19 = "Ngong Oliver";
+        String connection20 = "Tochukwu Anyaegbunam";
+
 
 
       /*  *//*
@@ -100,7 +135,7 @@ public class JGraphXAdapterProject extends JApplet {
 
         // create a JGraphT graph
         ListenableGraph<String, DefaultEdge> g =
-                new DefaultListenableGraph<>(new DefaultUndirectedGraph<>(DefaultEdge.class));
+                new DefaultListenableGraph<>(new DirectedMultigraph<>(DefaultEdge.class));
 
         // create a visualization using JGraph, via an adapter
         JGraphXAdapter<String, DefaultEdge> jgxAdapter = new JGraphXAdapter<>(g);
@@ -113,13 +148,69 @@ public class JGraphXAdapterProject extends JApplet {
         resize(DEFAULT_SIZE);
 
 
-        g.addVertex(year1);
-        g.addVertex(semester1);
-        g.addVertex(course1);
 
-        g.addEdge(year1, semester1);
-        g.addEdge(semester1, course1);
-       
+        /* Adding the vertices to the graph.*/
+        g.addVertex(connection1);
+        g.addVertex(connection2);
+        g.addVertex(connection3);
+        g.addVertex(connection4);
+        g.addVertex(connection5);
+        g.addVertex(connection6);
+        g.addVertex(connection7);
+        g.addVertex(connection8);
+        g.addVertex(connection9);
+        g.addVertex(connection10);
+        g.addVertex(connection11);
+        g.addVertex(connection12);
+        g.addVertex(connection13);
+        g.addVertex(connection14);
+        g.addVertex(connection15);
+        g.addVertex(connection16);
+        g.addVertex(connection17);
+        g.addVertex(connection18);
+        g.addVertex(connection19);
+        g.addVertex(connection20);
+
+        /* Creating edges between the vertices. */
+        g.addEdge(connection1, connection2);
+        g.addEdge(connection1, connection5);
+        g.addEdge(connection1, connection6);
+        g.addEdge(connection1, connection7);
+        g.addEdge(connection1, connection8);
+        g.addEdge(connection1, connection9);
+        g.addEdge(connection1, connection10);
+        g.addEdge(connection1, connection13);
+        g.addEdge(connection1, connection16);
+        g.addEdge(connection1, connection17);
+        g.addEdge(connection1, connection18);
+        g.addEdge(connection1, connection19);
+        g.addEdge(connection1, connection20);
+        g.addEdge(connection2, connection5);
+        g.addEdge(connection2, connection6);
+        g.addEdge(connection2, connection11);
+        g.addEdge(connection2, connection12);
+        g.addEdge(connection2, connection13);
+        g.addEdge(connection2, connection14);
+        g.addEdge(connection2, connection15);
+        g.addEdge(connection2, connection18);
+        g.addEdge(connection2, connection19);
+        g.addEdge(connection2, connection20);
+        g.addEdge(connection2, connection16);
+        g.addEdge(connection3, connection4);
+        g.addEdge(connection3, connection17);
+        g.addEdge(connection3, connection14);
+        g.addEdge(connection3, connection16);
+        g.addEdge(connection6, connection7);
+        g.addEdge(connection6, connection8);
+        g.addEdge(connection6, connection3);
+        g.addEdge(connection6, connection9);
+        g.addEdge(connection8, connection7);
+        g.addEdge(connection6, connection16);
+        g.addEdge(connection14, connection16);
+        g.addEdge(connection9, connection19);
+        g.addEdge(connection16, connection17);
+
+
 
         // positioning via jgraphx layouts
         mxCircleLayout layout = new mxCircleLayout(jgxAdapter);
