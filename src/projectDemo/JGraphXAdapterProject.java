@@ -3,6 +3,8 @@ package projectDemo;
 import com.mxgraph.layout.mxCircleLayout;
 import com.mxgraph.swing.mxGraphComponent;
 import org.jgrapht.ListenableGraph;
+import org.jgrapht.alg.interfaces.ShortestPathAlgorithm;
+import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.ext.JGraphXAdapter;
 import org.jgrapht.graph.DefaultEdge;
 import org.jgrapht.graph.DefaultListenableGraph;
@@ -67,7 +69,7 @@ public class JGraphXAdapterProject extends JApplet {
 
         /* Modelling LinkedIn connections using a graph.
         * Creating the connections that will serve as vertices.
-        * */
+        */
         String connection1 = "Excel Chukwu";
         String connection2 = "Sean Ofori-Addo";
         String connection3 = "Emmanuel Ainoo";
@@ -225,6 +227,14 @@ public class JGraphXAdapterProject extends JApplet {
         layout.execute(jgxAdapter.getDefaultParent());
 
 
+        /* Using the Dijkstra's shortest path algorithm to find the shortest
+        path from connection 1 to connection 4.
+         */
+        System.out.println("Shortest path from connection1 to connection4:");
+        DijkstraShortestPath<String, DefaultEdge> dijkstraAlg =
+                new DijkstraShortestPath<>(g);
+        ShortestPathAlgorithm.SingleSourcePaths<String, DefaultEdge> iPaths = dijkstraAlg.getPaths(connection1);
+        System.out.println(iPaths.getPath(connection4) + "\n");
     }
 
 
